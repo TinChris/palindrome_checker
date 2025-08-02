@@ -1,29 +1,44 @@
-// Füge einen Klick-Event-Listener zum Button mit der ID "check-btn" hinzu
-document.getElementById("check-btn").addEventListener("click", () => {
-  // Hole den eingegebenen Text aus dem Eingabefeld mit der ID "text-input"
-  const rawText = document.getElementById("text-input").value;
+const input = document.getElementById("text-input");
+const button = document.getElementById("check-btn");
+const resultDiv = document.getElementById("result");
 
-  // Überprüfe, ob das Eingabefeld leer ist oder nur aus Leerzeichen besteht
+function checkPalindrome() {
+  const rawText = input.value;
+
   if (!rawText || rawText.trim() === "") {
-    alert("Please input a value"); // Zeige Warnung, wenn keine Eingabe erfolgt ist
-    return; // Beende die Funktion
+    alert("Please input a value");
+    return;
   }
 
-  // Entferne alle Zeichen, die keine Buchstaben oder Zahlen sind (auch Leerzeichen und Sonderzeichen)
-  // Konvertiere den Text gleichzeitig in Kleinbuchstaben für einen fairen Vergleich
+  // Nur Buchstaben und Zahlen, ohne Leerzeichen und Sonderzeichen
   const cleanedText = rawText.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-  // Kehre den bereinigten Text um
   const reversedText = cleanedText.split("").reverse().join("");
-
-  // Überprüfe, ob der bereinigte Text mit seiner Umkehrung übereinstimmt
   const isPalindrome = cleanedText === reversedText;
 
-  // Erstelle eine Ergebnisnachricht, abhängig davon, ob es ein Palindrom ist oder nicht
+  // Ergebnis-Text mit Originaltext anzeigen
   const resultText = isPalindrome
     ? `${rawText} is a palindrome`
     : `${rawText} is not a palindrome`;
 
-  // Zeige das Ergebnis im Element mit der ID "result" an
-  document.getElementById("result").textContent = resultText;
+  // Ergebnis ausgeben
+  resultDiv.textContent = resultText;
+
+  // Farbklasse setzen (grün/rot)
+  resultDiv.classList.remove("palindrome", "not-palindrome");
+  resultDiv.classList.add(isPalindrome ? "palindrome" : "not-palindrome");
+
+  // Automatisch zu Ergebnis scrollen (optional)
+  resultDiv.scrollIntoView({ behavior: "smooth" });
+}
+
+// Klick-Event für Button
+button.addEventListener("click", checkPalindrome);
+
+// Enter-Taste löst Palindrom-Prüfung ebenfalls aus
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault(); // verhindert Formular-Submit, falls vorhanden
+    checkPalindrome();
+  }
 });
