@@ -109,11 +109,11 @@ body {
 
 /* Ergebnis grün bei Palindrom, rot sonst */
 #result.palindrome {
-  color: green;
+  color: #77dd77; /* Pastellgrün */
   font-weight: bold;
 }
 
 #result.not-palindrome {
-  color: red;
+  color: #ff6961; /* Pastellrot */
   font-weight: bold;
 }
