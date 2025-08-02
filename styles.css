@@ -1,25 +1,22 @@
 
- *{
+ * {
    /* margin: 0;
   padding: 0; */
   box-sizing: border-box; 
   /* border: 1px solid black; Debughoz használható  */
 
-}
-body{
-  
-}
+ }
 
 #page-wrapper {
   display: flex;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(45deg, #4a6fa5, #b7e4c7);
-flex-direction: column;
+  flex-direction: column;
   justify-content: center;
   align-items: center; 
 }
-#title{
+#title {
   font-size: 25px;
    text-align: center;
 }
@@ -46,6 +43,7 @@ border-radius: 4px;
 color:#938b5f;
 font-size: 20px;
 }
+
 #check-btn {
   
   color: black;
@@ -70,11 +68,10 @@ font-size: 20px;
   background-color: #d4b800;
   transform: scale(0.95);
 }
-#result{
+#result {
   width: 85%;
   height: 3rem;
   background-color: #fff6b0;
-  width: 80%;
 margin: 1rem;
 padding: 1rem;
 border: none;
@@ -86,5 +83,4 @@ font-size: 1rem;
   overflow-wrap: break-word;
   max-width: 100%;
   min-height: 3em;
-
 }
